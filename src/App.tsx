@@ -83,8 +83,7 @@ export default function App() {
       {/* Nav */}
       <nav className="relative z-50 flex justify-between items-center px-6 md:px-12 py-8 max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
-          <img src="/logo-mark.png" alt="CoRoam" className="w-8 h-8 object-contain" />
-          <div className="text-xl font-black tracking-tighter uppercase">COROAM</div>
+          <img src="/logo-text.jpg" alt="CoRoam" className="h-10 object-contain mix-blend-screen" />
         </div>
         <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
           <a href="#features" className="hover:text-white transition-colors">Features</a>
@@ -104,6 +103,7 @@ export default function App() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-7"
         >
+          <img src="/logo-text.jpg" alt="CoRoam Logo" className="w-64 md:w-[400px] mx-auto mb-4 mix-blend-screen opacity-95" />
           <span className="inline-block px-4 py-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] text-amber-400/95 text-xs font-bold tracking-widest uppercase">
             Solo Walk Priority
           </span>
@@ -259,9 +259,8 @@ export default function App() {
 
       {/* Footer */}
       <footer className="relative z-10 p-12 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-8 text-slate-400 text-sm">
-        <div className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
-          <img src="/logo-mark.png" alt="" className="w-5 h-5" />
-          <div className="font-black tracking-tighter text-white uppercase">COROAM</div>
+        <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-all">
+          <img src="/logo-text.jpg" alt="CoRoam" className="h-6 object-contain mix-blend-screen" />
         </div>
         <div className="flex gap-8 italic font-light">
           <span>Privacy</span>
