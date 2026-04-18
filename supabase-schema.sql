@@ -19,4 +19,14 @@ CREATE POLICY "Allow admins to view" ON public.waitlist
     FOR SELECT TO authenticated USING (auth.jwt() ->> 'role' = 'service_role');
 
 -- Optional: Function to auto-send invite via Edge Function hook
--- This can be connected to a Supabase Edge Function later to trigger emails.
+-- After deploying the Edge Function 'send-invite', run this to link it to the table:
+CREATE OR REPLACE TRIGGER on_waitlist_insert
+  AFTER INSERT ON public.waitlist
+  FOR EACH ROW EXECUTE FUNCTION supabase_functions.http_request(
+    'http://localhost:54321/functions/v1/send-invite',
+    'POST',
+    '{"Content-Type":"application/json"}',
+    '{}',
+    '1000'
+  );
+
