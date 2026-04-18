@@ -83,8 +83,7 @@ export default function App() {
       {/* Nav */}
       <nav className="relative z-50 flex justify-between items-center px-6 md:px-12 py-8 max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
-          <img src="/logo-mark.png" alt="CoRoam" className="w-8 h-8 object-contain" />
-          <div className="text-xl font-black tracking-tighter uppercase">COROAM</div>
+          <div className="text-xl font-black tracking-tighter uppercase text-[#0A84FF]">COROAM</div>
         </div>
         <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
           <a href="#features" className="hover:text-white transition-colors">Features</a>
