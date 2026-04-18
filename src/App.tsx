@@ -71,11 +71,9 @@ export default function App() {
 
       {/* Nav */}
       <nav className="relative z-50 flex justify-between items-center px-6 md:px-12 py-8 max-w-7xl mx-auto">
-        <div className="text-2xl font-black tracking-tighter flex items-center gap-2">
-          <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-            <div className="w-2 h-2 bg-black rounded-full" />
-          </div>
-          COROAM
+        <div className="flex items-center gap-3">
+          <img src="/logo-mark.png" alt="CoRoam" className="w-8 h-8 object-contain" />
+          <div className="text-xl font-black tracking-tighter uppercase">COROAM</div>
         </div>
         <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
           <a href="#features" className="hover:text-white transition-colors">Features</a>
@@ -93,9 +91,10 @@ export default function App() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-6"
+          className="space-y-8"
         >
-          <span className="px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-500 text-xs font-bold tracking-widest uppercase">
+          <img src="/logo-full.jpg" alt="CoRoam Logo" className="w-48 md:w-64 mx-auto mb-4 mix-blend-screen opacity-90" />
+          <span className="inline-block px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-500 text-xs font-bold tracking-widest uppercase">
             Solo Walk Priority
           </span>
           <h1 className="text-6xl md:text-[120px] font-black tracking-tighter leading-[0.9] mb-8">
@@ -231,7 +230,10 @@ export default function App() {
 
       {/* Footer */}
       <footer className="relative z-10 p-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 text-zinc-500 text-sm">
-        <div className="font-black tracking-tighter text-white">COROAM</div>
+        <div className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+          <img src="/logo-mark.png" alt="" className="w-5 h-5" />
+          <div className="font-black tracking-tighter text-white uppercase">COROAM</div>
+        </div>
         <div className="flex gap-8 italic font-light">
           <span>Privacy</span>
           <span>Terms</span>
