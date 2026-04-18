@@ -1,18 +1,13 @@
 import { useState } from 'react'
 import { supabase } from './lib/supabase'
-import { 
-  MapPin, 
-  Shield, 
-  Sparkles, 
-  Send, 
-  Navigation, 
-  Ghost, 
-  BookOpen, 
-  Share2, 
-  Users, 
-  ArrowRight,
+import {
+  Sparkles,
+  Navigation,
+  BookOpen,
+  Share2,
+  Users,
   ChevronRight,
-  CheckCircle2
+  CheckCircle2,
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -26,6 +21,14 @@ export default function App() {
     e.preventDefault()
     setLoading(true)
     setMessage('')
+
+    if (!supabase) {
+      setMessage(
+        'Supabase is not configured. Copy .env.example to .env and set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.'
+      )
+      setLoading(false)
+      return
+    }
 
     try {
       const { error } = await supabase
@@ -61,12 +64,13 @@ export default function App() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#050505] text-zinc-100 selection:bg-amber-400 selection:text-black font-sans">
+    <div className="min-h-screen bg-[#0a1628] text-zinc-100 selection:bg-amber-400/90 selection:text-[#0a1628] font-sans">
       {/* Cinematic Background Overlay */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-amber-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[120px]" />
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f35] via-[#0a1628] to-[#060f1c]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-amber-400/[0.07] rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] bg-sky-500/[0.06] rounded-full blur-[140px]" />
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.07]" />
       </div>
 
       {/* Nav */}
@@ -80,21 +84,20 @@ export default function App() {
           <a href="#routes" className="hover:text-white transition-colors">Routes</a>
           <a href="#community" className="hover:text-white transition-colors">Community</a>
         </div>
-        <button className="px-5 py-2 rounded-full border border-zinc-800 text-sm font-semibold hover:bg-zinc-900 transition-all">
+        <button className="px-5 py-2 rounded-full border border-white/10 text-sm font-semibold hover:bg-white/[0.06] transition-all">
           Beta Access
         </button>
       </nav>
 
       {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center justify-center pt-24 pb-32 px-6 text-center">
+      <section className="relative z-10 flex flex-col items-center justify-center pt-16 pb-32 px-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-8"
+          className="space-y-7"
         >
-          <img src="/logo-full.jpg" alt="CoRoam Logo" className="w-48 md:w-64 mx-auto mb-4 mix-blend-screen opacity-90" />
-          <span className="inline-block px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-500 text-xs font-bold tracking-widest uppercase">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] text-amber-400/95 text-xs font-bold tracking-widest uppercase">
             Solo Walk Priority
           </span>
           <h1 className="text-6xl md:text-[120px] font-black tracking-tighter leading-[0.9] mb-8">
@@ -118,7 +121,7 @@ export default function App() {
                 key="form"
                 exit={{ opacity: 0, scale: 0.95 }}
                 onSubmit={handleWaitlist} 
-                className="relative flex items-center p-1 rounded-full bg-zinc-900/50 border border-zinc-800 backdrop-blur-xl focus-within:border-zinc-600 transition-all shadow-2xl"
+                className="relative flex items-center p-1 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-xl focus-within:border-white/20 transition-all shadow-2xl"
               >
                 <input 
                   type="email" 
@@ -159,9 +162,9 @@ export default function App() {
             <motion.div 
               key={i}
               whileHover={{ y: -5 }}
-              className="group p-8 rounded-[40px] bg-zinc-900/30 border border-zinc-800 hover:border-zinc-700 transition-all backdrop-blur-sm"
+              className="group p-8 rounded-[40px] bg-white/[0.04] border border-white/10 hover:border-white/15 transition-all backdrop-blur-sm"
             >
-              <div className="w-12 h-12 rounded-2xl bg-zinc-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-white/[0.08] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 {f.icon}
               </div>
               <h3 className="text-2xl font-bold mb-3">{f.title}</h3>
@@ -174,7 +177,7 @@ export default function App() {
       </section>
 
       {/* Routes Section */}
-      <section id="routes" className="relative z-10 py-32 bg-zinc-900/10 border-y border-zinc-900">
+      <section id="routes" className="relative z-10 py-32 bg-black/15 border-y border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
             <h2 className="text-5xl font-black tracking-tight">Curated Routes.<br /><span className="text-zinc-600 font-light">Human Taste.</span></h2>
@@ -195,13 +198,13 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="relative aspect-square rounded-[60px] bg-zinc-900 border border-zinc-800 overflow-hidden shadow-2xl group">
-             <div className="absolute inset-0 bg-gradient-to-tr from-black to-zinc-800 opacity-60" />
+          <div className="relative aspect-square rounded-[60px] bg-[#0d2137] border border-white/10 overflow-hidden shadow-2xl group">
+             <div className="absolute inset-0 bg-gradient-to-tr from-[#050d18] to-[#152a45] opacity-70" />
              <div className="absolute inset-0 flex items-center justify-center">
                 <Navigation size={64} className="text-zinc-700 group-hover:scale-110 transition-transform duration-700" />
              </div>
              {/* Map Overlay Simulation */}
-             <div className="absolute bottom-8 left-8 right-8 p-6 rounded-3xl bg-zinc-900/90 border border-white/5 backdrop-blur-xl">
+             <div className="absolute bottom-8 left-8 right-8 p-6 rounded-3xl bg-[#0a1628]/95 border border-white/10 backdrop-blur-xl">
                 <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-1">Active Route</p>
                 <p className="text-lg font-bold italic">The Silent Promenade</p>
              </div>
@@ -211,7 +214,7 @@ export default function App() {
 
       {/* Referral / Community */}
       <section id="community" className="relative z-10 py-40 px-6 text-center max-w-3xl mx-auto space-y-12">
-        <Users className="mx-auto text-zinc-800" size={48} />
+        <Users className="mx-auto text-slate-600" size={48} />
         <div className="space-y-4">
           <h2 className="text-5xl font-black">Move Together, Alone.</h2>
           <p className="text-zinc-500 text-lg font-light">
@@ -222,14 +225,14 @@ export default function App() {
           <button className="px-8 py-4 rounded-full bg-white text-black font-bold flex items-center gap-2">
             Share Access <Share2 size={18} />
           </button>
-          <button className="px-8 py-4 rounded-full border border-zinc-800 text-zinc-400 font-bold hover:bg-zinc-900 transition-all">
+          <button className="px-8 py-4 rounded-full border border-white/12 text-slate-300 font-bold hover:bg-white/[0.06] transition-all">
             Join the Discord
           </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 p-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 text-zinc-500 text-sm">
+      <footer className="relative z-10 p-12 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-8 text-slate-400 text-sm">
         <div className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
           <img src="/logo-mark.png" alt="" className="w-5 h-5" />
           <div className="font-black tracking-tighter text-white uppercase">COROAM</div>
