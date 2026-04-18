@@ -246,7 +246,7 @@ export default function App() {
       <section id="community" className="relative z-10 py-40 px-6 text-center max-w-3xl mx-auto space-y-12">
         <Users className="mx-auto text-slate-600" size={48} />
         <div className="space-y-4">
-          <h2 className="text-5xl font-black">Move Together, Alone.</h2>
+          <h2 className="text-5xl font-black">Come Roam with us</h2>
           <p className="text-zinc-500 text-lg font-light">
             Refer fellow explorers and jump the queue. Every verified invite moves you 10 spots closer to the Solo Walk HUD.
           </p>
