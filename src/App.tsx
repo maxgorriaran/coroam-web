@@ -50,19 +50,19 @@ export default function App() {
       title: "Ambient Nudges",
       desc: "Real-time AI prompts that highlight hidden architecture and local lore as you pass it.",
       icon: <Sparkles className="text-amber-400" />,
-      image: "/app-nudge.png"
+      image: "/ui-nudge.jpg"
     },
     {
       title: "Vibe-Based Curation",
       desc: "Routes tailored to your current headspace—from 'Melancholic Neon' to 'Mid-day Momentum'.",
       icon: <Navigation className="text-blue-400" />,
-      image: "/app-vibe.png"
+      image: "/ui-vibe.jpg"
     },
     {
       title: "Auto-Diary",
       desc: "Your walk is automatically turned into a rich digital journal with photos and AI insights.",
       icon: <BookOpen className="text-emerald-400" />,
-      image: "/app-recap.png"
+      image: "/ui-diary.jpg"
     }
   ]
 
