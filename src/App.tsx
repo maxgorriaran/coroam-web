@@ -49,17 +49,20 @@ export default function App() {
     {
       title: "Ambient Nudges",
       desc: "Real-time AI prompts that highlight hidden architecture and local lore as you pass it.",
-      icon: <Sparkles className="text-amber-400" />
+      icon: <Sparkles className="text-amber-400" />,
+      image: "/app-nudge.png"
     },
     {
       title: "Vibe-Based Curation",
       desc: "Routes tailored to your current headspace—from 'Melancholic Neon' to 'Mid-day Momentum'.",
-      icon: <Navigation className="text-blue-400" />
+      icon: <Navigation className="text-blue-400" />,
+      image: "/app-vibe.png"
     },
     {
       title: "Auto-Diary",
       desc: "Your walk is automatically turned into a rich digital journal with photos and AI insights.",
-      icon: <BookOpen className="text-emerald-400" />
+      icon: <BookOpen className="text-emerald-400" />,
+      image: "/app-recap.png"
     }
   ]
 
@@ -157,20 +160,32 @@ export default function App() {
 
       {/* Feature Cards */}
       <section id="features" className="relative z-10 py-32 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((f, i) => (
             <motion.div 
               key={i}
-              whileHover={{ y: -5 }}
-              className="group p-8 rounded-[40px] bg-white/[0.04] border border-white/10 hover:border-white/15 transition-all backdrop-blur-sm"
+              whileHover={{ y: -10 }}
+              className="group flex flex-col rounded-[40px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all backdrop-blur-md overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-2xl bg-white/[0.08] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                {f.icon}
+              <div className="p-8 pb-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.08] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  {f.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{f.title}</h3>
+                <p className="text-zinc-500 leading-relaxed italic font-light text-sm">
+                  "{f.desc}"
+                </p>
               </div>
-              <h3 className="text-2xl font-bold mb-3">{f.title}</h3>
-              <p className="text-zinc-500 leading-relaxed italic font-light">
-                "{f.desc}"
-              </p>
+              <div className="mt-auto px-6 pb-6">
+                <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden border border-white/5 bg-black/40">
+                  <img 
+                    src={f.image} 
+                    alt={f.title} 
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -188,7 +203,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {[
             { city: "New York City", name: "Downtown Rim", stops: 12, tags: ["Architecture", "Harbor"], img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=800&auto=format&fit=crop" },
-            { city: "Chicago", name: "Riverwalk Loop", stops: 8, tags: ["Night", "Brutalism"], img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" },
+            { city: "Chicago", name: "Riverwalk Loop", stops: 8, tags: ["Night", "Brutalism"], img: "/app-route-chicago.png" },
             { city: "Miami", name: "Venetian Glow", stops: 15, tags: ["Waterfront", "Art Deco"], img: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=800&auto=format&fit=crop" }
           ].map((route, i) => (
             <motion.div 
