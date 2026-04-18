@@ -6,7 +6,6 @@ import {
   BookOpen,
   Share2,
   Users,
-  ChevronRight,
   CheckCircle2,
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -254,9 +253,6 @@ export default function App() {
         <div className="flex flex-wrap justify-center gap-4">
           <button className="px-8 py-4 rounded-full bg-white text-black font-bold flex items-center gap-2">
             Share Access <Share2 size={18} />
-          </button>
-          <button className="px-8 py-4 rounded-full border border-white/12 text-slate-300 font-bold hover:bg-white/[0.06] transition-all">
-            Join the Discord
           </button>
         </div>
       </section>
