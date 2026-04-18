@@ -20,15 +20,8 @@ CREATE POLICY "Enable insert for everyone" ON public.waitlist
 CREATE POLICY "Allow admins to view" ON public.waitlist
     FOR SELECT TO authenticated USING (auth.jwt() ->> 'role' = 'service_role');
 
--- Optional: Function to auto-send invite via Edge Function hook
--- After deploying the Edge Function 'send-invite', run this to link it to the table:
-CREATE OR REPLACE TRIGGER on_waitlist_insert
-  AFTER INSERT ON public.waitlist
-  FOR EACH ROW EXECUTE FUNCTION supabase_functions.http_request(
-    'http://localhost:54321/functions/v1/send-invite',
-    'POST',
-    '{"Content-Type":"application/json"}',
-    '{}',
-    '1000'
-  );
-
+-- Optional: after new waitlist rows, call an Edge Function or external URL.
+-- Do NOT use supabase_functions.http_request here — it is not available on all projects
+-- and triggers localhost URLs. Instead use:
+--   Supabase Dashboard → Database → Webhooks (table: waitlist, event: INSERT), or
+--   deploy supabase/functions/send-invite and point the webhook at your project URL.

@@ -104,7 +104,7 @@ export default function App() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-7"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] text-amber-400/95 text-xs font-bold tracking-widest uppercase">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-zinc-600/35 bg-white/[0.03] text-zinc-500 text-xs font-bold tracking-widest uppercase">
             Solo Walk Priority
           </span>
           <h1 className="text-6xl md:text-[120px] font-black tracking-tighter leading-[0.9] mb-8">
