@@ -203,7 +203,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {[
             { city: "New York City", name: "Downtown Rim", stops: 12, tags: ["Architecture", "Harbor"], img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=800&auto=format&fit=crop" },
-            { city: "Chicago", name: "Riverwalk Loop", stops: 8, tags: ["Night", "Brutalism"], img: "/app-route-chicago.png" },
+            { city: "Chicago", name: "Riverwalk Loop", stops: 8, tags: ["Night", "Brutalism"], img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" },
             { city: "Miami", name: "Venetian Glow", stops: 15, tags: ["Waterfront", "Art Deco"], img: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=800&auto=format&fit=crop" }
           ].map((route, i) => (
             <motion.div 
