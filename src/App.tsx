@@ -70,10 +70,15 @@ export default function App() {
     <div className="min-h-screen bg-[#0a1628] text-zinc-100 selection:bg-amber-400/90 selection:text-[#0a1628] font-sans">
       {/* Cinematic Background Overlay */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f35] via-[#0a1628] to-[#060f1c]" />
-        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-amber-400/[0.07] rounded-full blur-[130px]" />
-        <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] bg-sky-500/[0.06] rounded-full blur-[140px]" />
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.07]" />
+        <div className="absolute inset-0 bg-[#050d18]" />
+        <img 
+          src="/map-bg.jpg" 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity scale-110" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/60 via-[#0a1628]/80 to-[#060f1c]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-amber-400/[0.05] rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] bg-sky-500/[0.05] rounded-full blur-[140px]" />
       </div>
 
       {/* Nav */}
