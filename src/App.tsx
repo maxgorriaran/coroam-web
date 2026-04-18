@@ -265,9 +265,11 @@ export default function App() {
         <div className="flex gap-8 italic font-light">
           <span>Privacy</span>
           <span>Terms</span>
-          <span>Instagram</span>
+          <a href="https://instagram.com/coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+          <a href="https://tiktok.com/@coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>
+          <a href="https://facebook.com/coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
         </div>
-        <div>&copy; 2026 Built for the modern explorer.</div>
+        <div>&copy; 2026 coroam.io. Built for the modern explorer.</div>
       </footer>
     </div>
   )
