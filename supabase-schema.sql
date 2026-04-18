@@ -7,8 +7,10 @@ CREATE TABLE IF NOT EXISTS public.waitlist (
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Enable Row Level Security
-ALTER TABLE public.waitlist ENABLE ROW LEVEL SECURITY;
+-- Update the waitlist table to include names and metadata
+ALTER TABLE public.waitlist ADD COLUMN IF NOT EXISTS first_name TEXT;
+ALTER TABLE public.waitlist ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::jsonb;
+
 
 -- Allow anyone to insert into the waitlist (for the landing page)
 CREATE POLICY "Enable insert for everyone" ON public.waitlist
