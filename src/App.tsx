@@ -177,37 +177,47 @@ export default function App() {
       </section>
 
       {/* Routes Section */}
-      <section id="routes" className="relative z-10 py-32 bg-black/15 border-y border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
-            <h2 className="text-5xl font-black tracking-tight">Curated Routes.<br /><span className="text-zinc-600 font-light">Human Taste.</span></h2>
-            <p className="text-zinc-400 leading-relaxed text-lg font-light">
-              CoRoam maps are hand-picked by local curators who understand the poetry of a city. No high-traffic tourist traps. Only the atmospheric paths.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 text-zinc-300">
-                <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                San Juan 'Old World' Drift
+      <section id="routes" className="relative z-10 py-32 bg-black/15 border-y border-white/[0.06] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 text-center mb-16">
+          <h2 className="text-5xl font-black tracking-tight mb-6">Curated Routes.<br /><span className="text-zinc-600 font-light">Human Taste.</span></h2>
+          <p className="text-zinc-400 max-w-2xl mx-auto font-light">
+            No high-traffic tourist traps. Only the atmospheric paths hand-picked by local curators.
+          </p>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+          {[
+            { city: "New York City", name: "Downtown Rim", stops: 12, tags: ["Architecture", "Harbor"], img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=800&auto=format&fit=crop" },
+            { city: "Chicago", name: "Riverwalk Loop", stops: 8, tags: ["Night", "Brutalism"], img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" },
+            { city: "Miami", name: "Venetian Glow", stops: 15, tags: ["Waterfront", "Art Deco"], img: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=800&auto=format&fit=crop" }
+          ].map((route, i) => (
+            <motion.div 
+              key={i}
+              whileHover={{ y: -10 }}
+              className="group relative aspect-[3/4] rounded-[40px] bg-zinc-900 border border-white/10 overflow-hidden shadow-2xl"
+            >
+              <img src={route.img} alt={route.name} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="flex gap-2 mb-3">
+                  {route.tags.map(tag => (
+                    <span key={tag} className="px-2 py-0.5 rounded-full bg-white/10 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider">{tag}</span>
+                  ))}
+                </div>
+                <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mb-1">{route.city}</p>
+                <h3 className="text-2xl font-bold mb-1 italic">{route.name}</h3>
+                <p className="text-zinc-500 text-sm font-light">{route.stops} Curated Stops</p>
               </div>
-              <div className="flex items-center gap-4 text-zinc-300">
-                <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                Austin 'Neon Brutalism' Trek
-              </div>
-              <button className="flex items-center gap-2 text-white font-bold group pt-4">
-                Explore Maps <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          </div>
-          <div className="relative aspect-square rounded-[60px] bg-[#0d2137] border border-white/10 overflow-hidden shadow-2xl group">
-             <div className="absolute inset-0 bg-gradient-to-tr from-[#050d18] to-[#152a45] opacity-70" />
-             <div className="absolute inset-0 flex items-center justify-center">
-                <Navigation size={64} className="text-zinc-700 group-hover:scale-110 transition-transform duration-700" />
-             </div>
-             {/* Map Overlay Simulation */}
-             <div className="absolute bottom-8 left-8 right-8 p-6 rounded-3xl bg-[#0a1628]/95 border border-white/10 backdrop-blur-xl">
-                <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-1">Active Route</p>
-                <p className="text-lg font-bold italic">The Silent Promenade</p>
-             </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-xs text-zinc-600 uppercase tracking-[0.2em] font-bold mb-6">Currently Operational In</p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium text-zinc-400 italic">
+            {["New York City", "Chicago", "Miami", "Austin", "Los Angeles", "San Francisco", "Boston", "Washington DC", "Philadelphia", "Providence"].map(city => (
+              <span key={city} className="hover:text-white transition-colors cursor-default">{city}</span>
+            ))}
           </div>
         </div>
       </section>
