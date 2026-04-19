@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { supabase } from './lib/supabase'
 import {
   Sparkles,
@@ -15,6 +15,36 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [message, setMessage] = useState('')
+  const [shareFeedback, setShareFeedback] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!shareFeedback) return
+    const t = window.setTimeout(() => setShareFeedback(null), 2800)
+    return () => window.clearTimeout(t)
+  }, [shareFeedback])
+
+  const handleShareAccess = useCallback(async () => {
+    const url = window.location.href
+    const shareData: ShareData = {
+      title: 'CoRoam',
+      text: 'Join me on the CoRoam waitlist — AI-guided walks for urban explorers.',
+      url,
+    }
+    try {
+      if (typeof navigator.share === 'function') {
+        await navigator.share(shareData)
+        return
+      }
+    } catch (err) {
+      if (err instanceof Error && err.name === 'AbortError') return
+    }
+    try {
+      await navigator.clipboard.writeText(url)
+      setShareFeedback('Link copied — share it anywhere')
+    } catch {
+      setShareFeedback('Copy the URL from your browser’s address bar')
+    }
+  }, [])
 
   const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -250,10 +280,20 @@ export default function App() {
             Refer fellow explorers and jump the queue. Every verified invite moves you 10 spots closer to the Solo Walk HUD.
           </p>
         </div>
-        <div className="flex flex-wrap justify-center gap-4">
-          <button className="px-8 py-4 rounded-full bg-white text-black font-bold flex items-center gap-2">
-            Share Access <Share2 size={18} />
+        <div className="flex flex-col items-center gap-3">
+          <button
+            type="button"
+            onClick={handleShareAccess}
+            className="px-8 py-4 rounded-full bg-white text-black font-bold flex items-center gap-2 hover:bg-zinc-100 transition-colors"
+            aria-label="Share invite link"
+          >
+            Share Access <Share2 size={18} aria-hidden />
           </button>
+          {shareFeedback && (
+            <p className="text-sm text-emerald-400/90 font-medium" role="status">
+              {shareFeedback}
+            </p>
+          )}
         </div>
       </section>
 
