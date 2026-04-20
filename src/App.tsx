@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Privacy, Terms } from './Legal'
 import { supabase } from './lib/supabase'
 import {
   getWaitlistErrorMessage,
@@ -22,6 +23,19 @@ export default function App() {
   const [waitlistAlreadyRegistered, setWaitlistAlreadyRegistered] = useState(false)
   const [message, setMessage] = useState('')
   const [shareFeedback, setShareFeedback] = useState<string | null>(null)
+  const [view, setView] = useState<'home' | 'privacy' | 'terms'>('home')
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash
+      if (hash === '#privacy') setView('privacy')
+      else if (hash === '#terms') setView('terms')
+      else setView('home')
+    }
+    window.addEventListener('popstate', handleHash)
+    handleHash()
+    return () => window.removeEventListener('popstate', handleHash)
+  }, [])
 
   useEffect(() => {
     if (!shareFeedback) return
@@ -51,6 +65,9 @@ export default function App() {
       setShareFeedback('Copy the URL from your browser’s address bar')
     }
   }, [])
+
+  if (view === 'privacy') return <Privacy />
+  if (view === 'terms') return <Terms />
 
   const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -332,8 +349,8 @@ export default function App() {
           <div className="font-black tracking-tighter text-white uppercase">COROAM</div>
         </div>
         <div className="flex gap-8 italic font-light">
-          <span>Privacy</span>
-          <span>Terms</span>
+          <a href="#privacy" onClick={() => setView('privacy')} className="hover:text-white transition-colors">Privacy</a>
+          <a href="#terms" onClick={() => setView('terms')} className="hover:text-white transition-colors">Terms</a>
           <a href="https://instagram.com/coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
           <a href="https://tiktok.com/@coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>
           <a href="https://facebook.com/coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
