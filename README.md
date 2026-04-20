@@ -1,3 +1,21 @@
+# CoRoam (landing)
+
+Vite + React marketing site for [coroam.io](https://coroam.io). Supabase **migrations and Edge Functions** live in **Stride-Sync** — not in this repo. See `supabase-schema.sql` for an illustrative schema summary only.
+
+### Waitlist email logo (`send-invite`)
+
+The Stride-Sync Edge Function `send-invite` reads **`WAITLIST_EMAIL_LOGO_URL`**: a public **HTTPS** URL to a PNG (see Stride-Sync `supabase/functions/README.md`).
+
+This site serves the design wordmark at **`/coroam-wordmark.png`** (from Stride-Sync `assets/coroam-wordmark.png`). After you deploy the landing site, set:
+
+```bash
+supabase secrets set WAITLIST_EMAIL_LOGO_URL="https://coroam.io/coroam-wordmark.png"
+```
+
+Use your real production domain if different. Optionally set **`WAITLIST_EMAIL_SUBJECT`**, then redeploy the function from Stride-Sync (`supabase functions deploy send-invite`). When the wordmark changes in Stride-Sync, copy `assets/coroam-wordmark.png` into `public/coroam-wordmark.png` here and redeploy the site.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

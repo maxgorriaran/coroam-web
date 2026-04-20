@@ -1,27 +1,23 @@
--- Create the waitlist table
-CREATE TABLE IF NOT EXISTS public.waitlist (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    email TEXT NOT NULL UNIQUE,
-    source TEXT DEFAULT 'web_main',
-    status TEXT DEFAULT 'pending', -- pending, invited, active
-    created_at TIMESTAMPTZ DEFAULT now()
-);
+-- ILLUSTRATIVE ONLY — canonical migrations live in Stride-Sync (e.g. `067_waitlist.sql`,
+-- `068_waitlist_status_and_unique_email.sql`). Run `supabase db push` from that repo; production
+-- must match those files, not necessarily this snapshot.
 
--- Update the waitlist table to include names and metadata
-ALTER TABLE public.waitlist ADD COLUMN IF NOT EXISTS first_name TEXT;
-ALTER TABLE public.waitlist ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::jsonb;
+-- Intended production shape (see Stride-Sync for exact DDL):
+--
+-- * Table `public.waitlist`: columns include `email`, `source`, `created_at`, `metadata` (JSONB),
+--   optional `first_name`, and `status TEXT NOT NULL DEFAULT 'pending'` with a CHECK restricting
+--   values to `pending`, `invited`, `active`, `declined`.
+-- * Dedupe / uniqueness: unique index on **normalized** email, e.g.
+--   `(lower(trim(email)))` — duplicates by case or surrounding spaces collapse to one row.
+-- * RLS: anonymous and authenticated users may INSERT rows that satisfy the waitlist policy
+--   (e.g. only `pending` status for self-serve signups — do not send `status` from the browser;
+--   rely on DEFAULT + policy).
+-- * No broad SELECT for anon on `waitlist`; admin reads use service role or dashboard.
+-- * Optional: Database Webhook on `waitlist` INSERT → Edge Function (e.g. `send-invite`) → Resend.
+--   Email branding: `WAITLIST_EMAIL_LOGO_URL` must be a public HTTPS URL (e.g. this site’s
+--   `/coroam-wordmark.png` after deploy). See README.md and Stride-Sync `supabase/functions/README.md`.
 
-
--- Allow anyone to insert into the waitlist (for the landing page)
-CREATE POLICY "Enable insert for everyone" ON public.waitlist
-    FOR INSERT WITH CHECK (true);
-
--- Allow service role or authenticated admins to view/manage
-CREATE POLICY "Allow admins to view" ON public.waitlist
-    FOR SELECT TO authenticated USING (auth.jwt() ->> 'role' = 'service_role');
-
--- Optional: after new waitlist rows, call an Edge Function or external URL.
--- Do NOT use supabase_functions.http_request here — it is not available on all projects
--- and triggers localhost URLs. Instead use:
---   Supabase Dashboard → Database → Webhooks (table: waitlist, event: INSERT), or
---   deploy supabase/functions/send-invite and point the webhook at your project URL.
+-- Optional: after new waitlist rows, call an Edge Function (not `http_request` from SQL on all plans).
+-- Configure in Supabase Dashboard → Database → Webhooks (table: waitlist, event: INSERT), or
+-- deploy the function from Stride-Sync and point the webhook at:
+--   https://<project-ref>.supabase.co/functions/v1/send-invite

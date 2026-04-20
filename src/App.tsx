@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 import { supabase } from './lib/supabase'
 import {
+  getWaitlistErrorMessage,
+  isUniqueConstraintViolation,
+} from './lib/waitlistErrors'
+import {
   Sparkles,
   Navigation,
   BookOpen,
@@ -14,6 +18,8 @@ export default function App() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  /** When true, success panel explains duplicate email instead of new signup. */
+  const [waitlistAlreadyRegistered, setWaitlistAlreadyRegistered] = useState(false)
   const [message, setMessage] = useState('')
   const [shareFeedback, setShareFeedback] = useState<string | null>(null)
 
@@ -51,6 +57,13 @@ export default function App() {
     setLoading(true)
     setMessage('')
 
+    const normalizedEmail = email.trim().toLowerCase()
+    if (!normalizedEmail) {
+      setMessage('Please enter your email address.')
+      setLoading(false)
+      return
+    }
+
     if (!supabase) {
       setMessage(
         'Supabase is not configured. Copy .env.example to .env and set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.'
@@ -60,15 +73,22 @@ export default function App() {
     }
 
     try {
-      const { error } = await supabase
-        .from('waitlist')
-        .insert([{ email, source: 'web_premium' }])
+      const { error } = await supabase.from('waitlist').insert([
+        { email: normalizedEmail, source: 'web_premium' },
+      ])
 
       if (error) throw error
+      setWaitlistAlreadyRegistered(false)
       setSubmitted(true)
       setEmail('')
-    } catch (err: any) {
-      setMessage(err.message || "Connection failed. Please try again.")
+    } catch (err: unknown) {
+      if (isUniqueConstraintViolation(err)) {
+        setWaitlistAlreadyRegistered(true)
+        setSubmitted(true)
+        setEmail('')
+        return
+      }
+      setMessage(getWaitlistErrorMessage(err))
     } finally {
       setLoading(false)
     }
@@ -180,11 +200,19 @@ export default function App() {
                 key="success"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex flex-col items-center"
+                className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex flex-col items-center text-center"
               >
                 <CheckCircle2 size={32} className="mb-2" />
-                <p className="font-bold">You're on the list.</p>
-                <p className="text-sm opacity-80">Check your inbox for the welcome kit.</p>
+                <p className="font-bold">
+                  {waitlistAlreadyRegistered
+                    ? "You're already on the list."
+                    : "You're on the list."}
+                </p>
+                <p className="text-sm opacity-80">
+                  {waitlistAlreadyRegistered
+                    ? 'No need to sign up again — we’ll keep you posted.'
+                    : 'Check your inbox for the welcome kit.'}
+                </p>
               </motion.div>
             )}
           </AnimatePresence>
