@@ -169,7 +169,7 @@ export default function App() {
       </nav>
 
       {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center justify-center pt-8 pb-32 px-6 text-center">
+      <section className="relative z-10 flex flex-col items-center justify-center pt-0 pb-32 px-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
