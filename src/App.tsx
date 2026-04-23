@@ -116,19 +116,22 @@ export default function App() {
       title: "Ambient Nudges",
       desc: "Real-time AI prompts that highlight hidden architecture and local lore as you pass it.",
       icon: <Sparkles className="text-amber-400" />,
-      image: "/ui-nudge.jpg"
+      image: "/ui-nudge.jpg",
+      alt: "CoRoam mobile app interface showing AI-guided architectural highlights"
     },
     {
       title: "Vibe-Based Curation",
       desc: "Routes tailored to your current headspace—from 'Melancholic Neon' to 'Mid-day Momentum'.",
       icon: <Navigation className="text-blue-400" />,
-      image: "/ui-vibe.jpg"
+      image: "/ui-vibe.jpg",
+      alt: "CoRoam interface displaying curated walking routes based on mood and vibe"
     },
     {
       title: "Auto-Diary",
       desc: "Your walk is automatically turned into a rich digital journal with photos and AI insights.",
       icon: <BookOpen className="text-emerald-400" />,
-      image: "/ui-diary.jpg"
+      image: "/ui-diary.jpg",
+      alt: "Digital walking journal in the CoRoam app with AI insights and photos"
     }
   ]
 
@@ -139,7 +142,7 @@ export default function App() {
         <div className="absolute inset-0 bg-[#050d18]" />
         <img 
           src="/map-bg.jpg" 
-          alt="" 
+          alt="Atmospheric map of city streets representing CoRoam's urban exploration AI" 
           className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity scale-110" 
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/60 via-[#0a1628]/80 to-[#060f1c]" />
@@ -175,10 +178,10 @@ export default function App() {
             Solo Walk Priority
           </span>
           <h1 className="text-6xl md:text-[120px] font-black tracking-tighter leading-[0.9] mb-8">
-            Your City.<br /><span className="text-zinc-500">Unexplored.</span>
+            Stop navigating.<br /><span className="text-zinc-500">Start roaming.</span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto font-light leading-relaxed">
-            A specialized companion for the urban explorer. Premium AI guidance designed to deepen your connection with the street.
+            Swap the shortest route for the <strong>most interesting one</strong>. Receive neural nudges toward hidden gems and <strong>share your path</strong> with a community of explorers.
           </p>
         </motion.div>
 
@@ -259,7 +262,7 @@ export default function App() {
                 <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden border border-white/5 bg-black/40">
                   <img 
                     src={f.image} 
-                    alt={f.title} 
+                    alt={f.alt} 
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -290,7 +293,7 @@ export default function App() {
               whileHover={{ y: -10 }}
               className="group relative aspect-[3/4] rounded-[40px] bg-zinc-900 border border-white/10 overflow-hidden shadow-2xl"
             >
-              <img src={route.img} alt={route.name} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" />
+              <img src={route.img} alt={`Atmospheric curated walking route in ${route.city} by CoRoam`} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
               <div className="absolute bottom-8 left-8 right-8">
                 <div className="flex gap-2 mb-3">
