@@ -192,7 +192,7 @@ export default function App() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-12 w-full max-w-md relative z-20"
+          className="mt-12 w-full max-w-md relative z-20 mx-auto"
         >
           <AnimatePresence mode="wait">
             {!submitted ? (
