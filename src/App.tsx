@@ -154,7 +154,7 @@ export default function App() {
       <nav className="relative z-50 flex justify-between items-center px-6 md:px-12 py-8 max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
           <img src="/logo-mark.png" alt="CoRoam" className="w-10 h-10 object-contain rounded-lg" />
-          <div className="text-xl font-black tracking-tighter uppercase text-[#0A84FF]">COROAM</div>
+          <img src="/coroam-wordmark-new.png" alt="CoRoam" className="h-6 object-contain" />
         </div>
         <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
           <a href="#features" className="hover:text-white transition-colors">Features</a>
@@ -349,7 +349,7 @@ export default function App() {
       <footer className="relative z-10 p-12 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-8 text-slate-400 text-sm">
         <div className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
           <img src="/logo-mark.png" alt="" className="w-5 h-5" />
-          <div className="font-black tracking-tighter text-white uppercase">COROAM</div>
+          <img src="/coroam-wordmark-new.png" alt="CoRoam" className="h-4 object-contain" />
         </div>
         <div className="flex gap-8 italic font-light">
           <a href="#privacy" onClick={() => setView('privacy')} className="hover:text-white transition-colors">Privacy</a>
