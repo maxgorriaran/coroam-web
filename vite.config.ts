@@ -31,6 +31,7 @@ export default defineConfig(({ command }) => ({
       'framer-motion',
       'lucide-react',
       '@supabase/supabase-js',
+      'maplibre-gl',
     ],
   },
   server: {
@@ -56,6 +57,7 @@ export default defineConfig(({ command }) => ({
           if (id.includes('framer-motion')) return 'motion'
           if (id.includes('@supabase')) return 'supabase'
           if (id.includes('lucide-react')) return 'icons'
+          if (id.includes('maplibre-gl')) return 'maplibre'
         },
       },
     },

@@ -1,25 +1,37 @@
 import { motion } from 'framer-motion'
-import { Sparkles, Map as MapIcon, Share2, Compass, BookOpen, CheckCircle2, Navigation } from 'lucide-react'
+import { Sparkles, Share2, Navigation } from 'lucide-react'
+import { RoamMapCanvas } from './RoamMapCanvas'
 
 export function BetterMap() {
   return (
-    <div className="min-h-screen bg-[#050A18] text-zinc-100 selection:bg-amber-400/90 selection:text-[#050A18] font-sans overflow-x-hidden">
-      {/* Navigation */}
-      <nav className="relative z-50 flex justify-between items-center px-6 md:px-12 py-6 max-w-7xl mx-auto">
-        <div className="flex-1 flex items-center gap-3">
-          <img src="/coroam-wordmark-new.png" alt="CoRoam" className="h-10 object-contain" />
+    <div className="min-h-screen bg-[#0a1628] text-zinc-100 selection:bg-amber-400/90 selection:text-[#0a1628] font-sans overflow-x-hidden">
+      {/* Nav — matches landing (App.tsx) */}
+      <nav className="relative z-50 flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
+        <div className="flex-1 flex items-center gap-3 min-w-0">
+          <img src="/logo-mark.png" alt="" className="w-10 h-10 object-contain rounded-lg shrink-0" />
+          <img src="/coroam-wordmark-new.png" alt="CoRoam" className="h-44 object-contain" />
         </div>
-        <div className="hidden md:flex flex-1 justify-center gap-8 text-[11px] font-bold uppercase tracking-widest text-zinc-500">
-          <a href="#better-map" className="text-white">The Map</a>
-          <a href="#features" className="hover:text-white transition-colors">Features</a>
-          <a href="#routes" className="hover:text-white transition-colors">Routes</a>
-          <a href="#community" className="hover:text-white transition-colors">Community</a>
+        <div className="hidden md:flex flex-1 justify-center gap-8 text-sm font-medium text-zinc-500">
+          <a href="#better-map" className="hover:text-white transition-colors">
+            The Map
+          </a>
+          <a href="#features" className="hover:text-white transition-colors">
+            Features
+          </a>
+          <a href="#routes" className="hover:text-white transition-colors">
+            Routes
+          </a>
+          <a href="#community" className="hover:text-white transition-colors">
+            Community
+          </a>
         </div>
-        <div className="flex-1 flex justify-end gap-6 items-center">
-            <a href="/" className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">Login</a>
-            <button className="px-6 py-2 rounded-full border border-white/20 text-[11px] font-bold uppercase tracking-widest hover:bg-white/10 transition-all">
-                Get Early Access
-            </button>
+        <div className="flex-1 flex justify-end">
+          <button
+            type="button"
+            className="px-5 py-2 rounded-full border border-white/10 text-sm font-semibold hover:bg-white/[0.06] transition-all"
+          >
+            Beta Access
+          </button>
         </div>
       </nav>
 
@@ -56,37 +68,12 @@ export function BetterMap() {
            className="relative aspect-square md:aspect-auto md:h-[600px] w-full"
         >
           <div className="absolute inset-0 bg-[#0A1128] rounded-[60px] border border-white/5 overflow-hidden shadow-2xl">
-            {/* Actual Map Graphic */}
-            <img 
-              src="/scout-map-preview.jpg" 
-              className="absolute inset-0 w-full h-full object-cover opacity-60" 
-              alt="CoRoam Scout Map Discovery View"
-            />
-            
-            {/* The Route Path Graphic Overlay */}
-            <svg className="absolute inset-0 w-full h-full opacity-60">
-                <path d="M100,500 Q250,400 400,450 T650,350" fill="none" stroke="#FFB703" strokeWidth="3" strokeDasharray="12 12" />
-                <circle cx="100" cy="500" r="6" fill="#FFB703" className="animate-pulse" />
-            </svg>
-
-            {/* Floating UI Annotations (The CoLab Style) */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }} 
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-[20%] right-[10%] p-4 bg-white rounded-2xl shadow-2xl w-64 text-zinc-900 space-y-2 z-20"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-zinc-200" />
-                <span className="text-[10px] font-bold">Sarah K. | 0.2mi Away</span>
-                <span className="ml-auto px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-600 text-[8px] font-black uppercase tracking-tighter">Active</span>
-              </div>
-              <p className="text-[10px] text-zinc-500 leading-tight">"Just found a hidden courtyard behind the library. The vibe is immaculate."</p>
-            </motion.div>
+            <RoamMapCanvas className="h-full min-h-[320px] md:min-h-0" />
 
             <motion.div 
               animate={{ y: [0, 10, 0] }} 
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-[25%] left-[15%] p-4 bg-white rounded-2xl shadow-2xl w-56 text-zinc-900 space-y-2 z-20"
+              className="absolute bottom-[38%] left-[8%] p-4 bg-white rounded-2xl shadow-2xl w-56 text-zinc-900 space-y-2 z-20 pointer-events-none md:bottom-[32%]"
             >
                <div className="flex items-center gap-2">
                 <div className="w-5 h-5 rounded-lg bg-amber-400 flex items-center justify-center text-black font-black text-[8px]">C</div>
@@ -103,7 +90,7 @@ export function BetterMap() {
         <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-4xl font-black uppercase tracking-tighter">How it works</h2>
             <p className="text-xl text-zinc-400 font-light leading-relaxed">
-              Standard maps are for arriving. CoRoam is for roaming. Our engine analyzes city data in real-time to curate a path that prioritizes atmosphere over efficiency. As you move, the map scouts 150m ahead, prepping neural nudges that surface the neighborhood's deepest secrets.
+              When you open the app, you land on our Let&apos;s Roam flow to get your roam started. Before you head out, you pick the kind of walk you want—a historic walk, a social walk, nature, or food. From there, nudges can guide you along the way whenever you choose to lean into those vibes. Mid-roam, you can also steer toward specific paths—for example, more food spots—if you want fresh options. Along the route you can add photos and notes, then wrap up with a summary of how the walk felt.
             </p>
         </div>
       </section>
@@ -146,11 +133,45 @@ export function BetterMap() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="relative z-10 p-12 text-center border-t border-white/5">
-        <div className="text-zinc-700 text-[10px] font-bold uppercase tracking-[0.4em]">
-          CoRoam &copy; 2026. Built for the modern explorer.
+      {/* Footer — matches landing (App.tsx) */}
+      <footer className="relative z-10 p-6 border-t border-white/[0.06] flex flex-col md:flex-row items-center gap-8 text-slate-400 text-sm">
+        <div className="flex-1 flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all min-w-0">
+          <img src="/logo-mark.png" alt="" className="w-5 h-5 shrink-0" />
+          <img src="/coroam-wordmark-new.png" alt="CoRoam" className="h-44 object-contain" />
         </div>
+        <div className="flex-1 flex justify-center flex-wrap gap-8 italic font-light">
+          <a href="#privacy" className="hover:text-white transition-colors">
+            Privacy
+          </a>
+          <a href="#terms" className="hover:text-white transition-colors">
+            Terms
+          </a>
+          <a
+            href="https://instagram.com/coroam.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://tiktok.com/@coroam.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            TikTok
+          </a>
+          <a
+            href="https://facebook.com/coroam.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            Facebook
+          </a>
+        </div>
+        <div className="flex-1 flex justify-end text-right">&copy; 2026 coroam.io. Built for the modern explorer.</div>
       </footer>
     </div>
   )

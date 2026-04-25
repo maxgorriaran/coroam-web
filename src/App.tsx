@@ -35,8 +35,12 @@ export default function App() {
       else setView('home')
     }
     window.addEventListener('popstate', handleHash)
+    window.addEventListener('hashchange', handleHash)
     handleHash()
-    return () => window.removeEventListener('popstate', handleHash)
+    return () => {
+      window.removeEventListener('popstate', handleHash)
+      window.removeEventListener('hashchange', handleHash)
+    }
   }, [])
 
   useEffect(() => {
