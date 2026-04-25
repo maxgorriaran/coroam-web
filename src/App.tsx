@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Privacy, Terms } from './Legal'
+import { BetterMap } from './BetterMap'
 import { supabase } from './lib/supabase'
 import {
   getWaitlistErrorMessage,
@@ -23,13 +24,14 @@ export default function App() {
   const [waitlistAlreadyRegistered, setWaitlistAlreadyRegistered] = useState(false)
   const [message, setMessage] = useState('')
   const [shareFeedback, setShareFeedback] = useState<string | null>(null)
-  const [view, setView] = useState<'home' | 'privacy' | 'terms'>('home')
+  const [view, setView] = useState<'home' | 'privacy' | 'terms' | 'better-map'>('home')
 
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash
       if (hash === '#privacy') setView('privacy')
       else if (hash === '#terms') setView('terms')
+      else if (hash === '#better-map') setView('better-map')
       else setView('home')
     }
     window.addEventListener('popstate', handleHash)
@@ -68,6 +70,7 @@ export default function App() {
 
   if (view === 'privacy') return <Privacy />
   if (view === 'terms') return <Terms />
+  if (view === 'better-map') return <BetterMap />
 
   const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -157,6 +160,7 @@ export default function App() {
           <img src="/coroam-wordmark-new.png" alt="CoRoam" className="h-44 object-contain" />
         </div>
         <div className="hidden md:flex flex-1 justify-center gap-8 text-sm font-medium text-zinc-500">
+          <a href="#better-map" className="hover:text-white transition-colors">The Map</a>
           <a href="#features" className="hover:text-white transition-colors">Features</a>
           <a href="#routes" className="hover:text-white transition-colors">Routes</a>
           <a href="#community" className="hover:text-white transition-colors">Community</a>
