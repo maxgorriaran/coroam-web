@@ -177,6 +177,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0a1628] text-zinc-100 selection:bg-amber-400/90 selection:text-[#0a1628] font-sans">
+      <img
+        src="/app-icon-spacious.png"
+        alt="CoRoam app icon"
+        className="pointer-events-none fixed -left-[200vw] top-0 h-[1200px] w-[1200px] opacity-0"
+        aria-hidden="true"
+      />
       {/* Cinematic Background Overlay */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-[#050d18]" />
