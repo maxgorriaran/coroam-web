@@ -81,7 +81,9 @@ export function BetterMap() {
         <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-4xl font-black uppercase tracking-tighter">How it works</h2>
             <p className="text-xl text-zinc-400 font-light leading-relaxed">
-              When you open the app, you land on our Let&apos;s Roam flow to get your roam started. Before you head out, you pick the kind of roam you want—a historic roam, a social roam, nature, or food. From there, nudges can guide you along the way whenever you choose to lean into those vibes. Mid-roam, you can also steer toward specific paths—for example, more food spots—if you want fresh options. Along the route you can add photos and notes, then wrap up with a summary of how the roam felt.
+              When you open the app, you’re met with the &apos;Let&apos;s Roam&apos; page, the launchpad for your roam. Before you take your first step, you define your vibe: choose from a curated spectrum of journeys, whether it’s a Foodie crawl, a Historic deep-dive, a Social pulse, or whatever you feel. Once you’re moving, our Nudges act as your compass, offering subtle guidance toward hidden gems if you’re ready to lean into the unplanned.
+              <br /><br />
+              You remain the architect of your own journey; at any point, you can manually override the path to route toward specific local coffee shops, secluded nature trails, or historic views in your immediate area. Capture the &quot;in-between&quot; moments by uploading photos, pinning notes, or logging voice recordings to your urban diary. Once you end your roam you will receive a Summary or digital reflection of your real-world rhythm and the high-definition memories you made along the way.
             </p>
         </div>
       </section>
