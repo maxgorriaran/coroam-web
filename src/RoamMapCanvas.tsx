@@ -150,10 +150,26 @@ export function RoamMapCanvas({ className = '' }: RoamMapCanvasProps) {
       {/* Center Stats Pill */}
       <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-20">
         <div className="bg-white/95 backdrop-blur-sm px-6 py-2.5 rounded-full shadow-xl flex items-center gap-3 border border-black/5">
-          <span className="text-zinc-800 font-bold text-sm tracking-tight">0:07</span>
+          <span className="text-zinc-800 font-bold text-sm tracking-tight">0:00</span>
           <div className="w-px h-3 bg-zinc-300" />
           <span className="text-zinc-800 font-bold text-sm tracking-tight">0 ft</span>
         </div>
+      </div>
+
+      {/* Let's Roam Overlay Card */}
+      <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="w-[90%] max-w-md p-10 rounded-[40px] bg-sky-500/80 backdrop-blur-md shadow-2xl border border-white/20 flex flex-col items-center text-center space-y-4 pointer-events-auto"
+        >
+          <h2 className="text-5xl font-black text-white drop-shadow-lg tracking-tight">
+            Let&apos;s Roam
+          </h2>
+          <p className="text-xl font-medium text-white drop-shadow-md leading-snug">
+            Get outside—we&apos;ll give you something<br />to do.
+          </p>
+        </motion.div>
       </div>
 
       {/* Bottom Action Bar */}
