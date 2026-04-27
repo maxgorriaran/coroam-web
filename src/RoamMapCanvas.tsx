@@ -1,34 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { motion } from 'framer-motion'
-import { Landmark, Trees, UtensilsCrossed, Users, MoreHorizontal, Camera, Leaf } from 'lucide-react'
-import { AmbientNudge } from './AmbientNudge'
-import {
-  HERALD_AREA_POIS,
-  NudgeManager,
-  type AmbientNudgePayload,
-  type RoamVibe,
-} from './lib/nudgeManager'
-
-export type { RoamVibe as RoamCategory } from './lib/nudgeManager'
+import { MoreHorizontal, Camera, Leaf } from 'lucide-react'
 
 const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
 
 /** Dense Manhattan grid — strong building extrusion coverage. */
 const URBAN_CENTER: [number, number] = [-73.987742, 40.750742]
-
-const CATEGORIES: {
-  id: RoamVibe
-  label: string
-  hint: string
-  Icon: typeof Landmark
-}[] = [
-  { id: 'Historic', label: 'Historic', hint: 'Landmarks & lore', Icon: Landmark },
-  { id: 'Social', label: 'Social', hint: 'Neighborhood energy', Icon: Users },
-  { id: 'Nature', label: 'Nature', hint: 'Parks & green pockets', Icon: Trees },
-  { id: 'Food', label: 'Food', hint: 'Tastes along the way', Icon: UtensilsCrossed },
-]
 
 type RoamMapCanvasProps = {
   className?: string
@@ -37,59 +15,7 @@ type RoamMapCanvasProps = {
 export function RoamMapCanvas({ className = '' }: RoamMapCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
-  const [category, setCategory] = useState<RoamVibe>('Historic')
-  const [roamStarted, setRoamStarted] = useState(false)
-  const [mapReady, setMapReady] = useState(false)
-  const [ambientNudge, setAmbientNudge] = useState<AmbientNudgePayload | null>(null)
-  const [ambientSequence, setAmbientSequence] = useState(0)
-  const nudgeManagerRef = useRef<NudgeManager | null>(null)
-  const categoryRef = useRef(category)
-
-  const dismissAmbientNudge = useCallback(() => {
-    setAmbientNudge(null)
-  }, [])
-
-  useEffect(() => {
-    categoryRef.current = category
-  }, [category])
-
-  const startRoam = useCallback(() => {
-    const map = mapRef.current
-    if (!map) return
-    setRoamStarted(true)
-    map.easeTo({
-      pitch: 0,
-      bearing: 0,
-      zoom: 17,
-      duration: 1200,
-      easing: (t) => 1 - Math.pow(1 - t, 2.2),
-    })
-  }, [])
-
-  useEffect(() => {
-    if (!roamStarted) {
-      nudgeManagerRef.current?.stop()
-      nudgeManagerRef.current = null
-      return
-    }
-
-    const mgr = new NudgeManager({
-      pois: HERALD_AREA_POIS,
-      getVibe: () => categoryRef.current,
-      proximityMeters: 50,
-      onAmbientNudge: (payload) => {
-        setAmbientSequence((s) => s + 1)
-        setAmbientNudge(payload)
-      },
-    })
-    nudgeManagerRef.current = mgr
-    mgr.start()
-
-    return () => {
-      mgr.stop()
-      nudgeManagerRef.current = null
-    }
-  }, [roamStarted])
+  const [, setMapReady] = useState(false)
 
   useEffect(() => {
     const el = containerRef.current
@@ -139,10 +65,10 @@ export function RoamMapCanvas({ className = '' }: RoamMapCanvasProps) {
 
       {/* Top Controls Overlay */}
       <div className="absolute top-6 right-6 flex items-center gap-3 z-20">
-        <button className="w-10 h-10 rounded-full bg-[#1a2b3c] flex items-center justify-center text-white shadow-lg">
+        <button className="w-10 h-10 rounded-full bg-[#1a2b3c] flex items-center justify-center text-white shadow-lg border-0 cursor-pointer">
           <MoreHorizontal size={20} />
         </button>
-        <button className="px-5 py-2 rounded-xl bg-white text-rose-500 font-bold text-sm shadow-lg">
+        <button className="px-5 py-2 rounded-xl bg-white text-rose-500 font-bold text-sm shadow-lg border-0 cursor-pointer">
           End
         </button>
       </div>
@@ -158,29 +84,27 @@ export function RoamMapCanvas({ className = '' }: RoamMapCanvasProps) {
 
       {/* Let's Roam Overlay Card */}
       <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+        <div 
           className="w-[80%] max-w-sm p-8 rounded-[32px] bg-sky-500/80 backdrop-blur-md shadow-2xl border border-white/20 flex flex-col items-center text-center space-y-3 pointer-events-auto"
         >
-          <h2 className="text-4xl font-black text-white drop-shadow-lg tracking-tight">
+          <h2 className="text-4xl font-black text-white drop-shadow-lg tracking-tight m-0">
             Let&apos;s Roam
           </h2>
-          <p className="text-lg font-medium text-white drop-shadow-md leading-snug">
+          <p className="text-lg font-medium text-white drop-shadow-md leading-snug m-0">
             Get outside—we&apos;ll give you something<br />to do.
           </p>
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom Action Bar */}
       <div className="absolute bottom-6 inset-x-12 grid grid-cols-2 gap-4 z-20">
-        <button className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-[20px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
+        <button className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-[20px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group cursor-pointer">
           <div className="w-8 h-8 rounded-xl bg-green-500/20 flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
             <Leaf size={18} fill="currentColor" />
           </div>
           <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white">Explore</span>
         </button>
-        <button className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-[20px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
+        <button className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-[20px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group cursor-pointer">
           <div className="w-8 h-8 rounded-xl bg-sky-500/20 flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
             <Camera size={18} fill="currentColor" />
           </div>
