@@ -123,22 +123,22 @@ export default function App() {
 
   const features = [
     {
-      title: "Ambient Nudges",
-      desc: "Real-time AI prompts that highlight hidden architecture and local lore as you pass it.",
+      title: "Neural Nudges",
+      desc: "Proactive, location-based cues that identify points of interest tailored to your chosen 'vibe.' From historical landmarks to secluded nature paths, these nudges guide you in real-time by surfacing the 'invisible' details of your route that standard maps overlook.",
       icon: <Sparkles className="text-amber-400" />,
       image: "/ui-nudge.jpg",
       alt: "CoRoam mobile app interface showing AI-guided architectural highlights"
     },
     {
-      title: "Vibe-Based Curation",
-      desc: "Routes tailored to your current headspace—from 'Melancholic Neon' to 'Mid-day Momentum'.",
+      title: "Intent-Driven Curation",
+      desc: "Dynamic route generation based on your specific objective, whether you’re hunting for local culinary gems, deep-diving into neighborhood lore, or seeking the quietest nature paths.",
       icon: <Navigation className="text-blue-400" />,
       image: "/ui-vibe.jpg",
       alt: "CoRoam interface displaying curated roaming routes based on mood and vibe"
     },
     {
-      title: "Auto-Diary",
-      desc: "Your roam is automatically turned into a rich digital journal with photos and AI insights.",
+      title: "The Urban Diary",
+      desc: "A seamless chronological record of your exploration. The app automatically organizes your photos, voice memos, and location data into a high-fidelity summary of the day’s rhythm.",
       icon: <BookOpen className="text-emerald-400" />,
       image: "/ui-diary.jpg",
       alt: "Digital roaming journal in the CoRoam app with AI insights and photos"
