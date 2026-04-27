@@ -113,16 +113,6 @@ export function BetterMap() {
         </div>
       </section>
 
-      {/* Partner/Social Proof Bar */}
-      <div className="relative z-10 py-12 border-t border-white/5 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all overflow-hidden whitespace-nowrap px-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center gap-12 font-black uppercase tracking-[0.3em] text-[10px]">
-          <span>App Store Best of 2026</span>
-          <span>Wired Magazine</span>
-          <span>TechCrunch</span>
-          <span>Urban Explorer Weekly</span>
-          <span>Vogue Discovery</span>
-        </div>
-      </div>
 
       {/* Footer — matches landing (App.tsx) */}
       <footer className="relative z-10 p-6 border-t border-white/[0.06] flex flex-col md:flex-row items-center gap-8 text-slate-400 text-sm">
