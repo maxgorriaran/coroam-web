@@ -124,7 +124,7 @@ export default function App() {
   const features = [
     {
       title: "Neural Nudges",
-      desc: "Proactive, location-based cues that identify points of interest tailored to your chosen 'vibe.' From historical landmarks to secluded nature paths, these nudges guide you in real-time by surfacing the 'invisible' details of your route that standard maps overlook.",
+      desc: "Proactive, location-based cues tailored to your chosen vibe. From historical lore to secluded nature paths, these nudges surface the 'invisible' details of your route that standard maps overlook.",
       icon: <Sparkles className="text-amber-400" />,
       image: "/ui-nudge.jpg",
       alt: "CoRoam mobile app interface showing AI-guided architectural highlights"
