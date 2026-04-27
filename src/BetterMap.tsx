@@ -95,7 +95,7 @@ export function BetterMap() {
             <div className="w-12 h-12 rounded-2xl bg-amber-400/10 flex items-center justify-center">
               <Sparkles className="text-amber-400" />
             </div>
-            <h3 className="text-2xl font-bold">Neural Nudges</h3>
+            <h3 className="text-2xl font-bold">Ambient Nudges</h3>
             <p className="text-zinc-500 font-light leading-relaxed italic">"Our AI doesn't just give directions; it suggests 'detours of interest' based on local lore and atmospheric beauty."</p>
           </div>
           <div className="space-y-6">
