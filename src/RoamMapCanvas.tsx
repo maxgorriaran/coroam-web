@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { motion } from 'framer-motion'
-import { Landmark, Trees, UtensilsCrossed, Users } from 'lucide-react'
+import { Landmark, Trees, UtensilsCrossed, Users, MoreHorizontal, Camera, Leaf } from 'lucide-react'
 import { AmbientNudge } from './AmbientNudge'
 import {
   HERALD_AREA_POIS,
@@ -13,10 +13,7 @@ import {
 
 export type { RoamVibe as RoamCategory } from './lib/nudgeManager'
 
-/** Dark basemap — clean, modern urban focus. */
-const MAP_STYLE =
-  (import.meta.env.VITE_MAPLIBRE_STYLE_URL as string | undefined) ??
-  'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
 
 /** Dense Manhattan grid — strong building extrusion coverage. */
 const URBAN_CENTER: [number, number] = [-73.987742, 40.750742]
@@ -139,6 +136,41 @@ export function RoamMapCanvas({ className = '' }: RoamMapCanvasProps) {
   return (
     <div className={`relative isolate overflow-hidden rounded-[inherit] ${className}`}>
       <div ref={containerRef} className="absolute inset-0 h-full min-h-[320px] w-full md:min-h-0" />
+
+      {/* Top Controls Overlay */}
+      <div className="absolute top-6 right-6 flex items-center gap-3 z-20">
+        <button className="w-10 h-10 rounded-full bg-[#1a2b3c] flex items-center justify-center text-white shadow-lg">
+          <MoreHorizontal size={20} />
+        </button>
+        <button className="px-5 py-2 rounded-xl bg-white text-rose-500 font-bold text-sm shadow-lg">
+          End
+        </button>
+      </div>
+
+      {/* Center Stats Pill */}
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-20">
+        <div className="bg-white/95 backdrop-blur-sm px-6 py-2.5 rounded-full shadow-xl flex items-center gap-3 border border-black/5">
+          <span className="text-zinc-800 font-bold text-sm tracking-tight">0:07</span>
+          <div className="w-px h-3 bg-zinc-300" />
+          <span className="text-zinc-800 font-bold text-sm tracking-tight">0 ft</span>
+        </div>
+      </div>
+
+      {/* Bottom Action Bar */}
+      <div className="absolute bottom-8 inset-x-8 grid grid-cols-2 gap-4 z-20">
+        <button className="flex flex-col items-center justify-center gap-2 py-4 rounded-[24px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
+          <div className="w-10 h-10 rounded-2xl bg-green-500/20 flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+            <Leaf size={22} fill="currentColor" />
+          </div>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Explore</span>
+        </button>
+        <button className="flex flex-col items-center justify-center gap-2 py-4 rounded-[24px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
+          <div className="w-10 h-10 rounded-2xl bg-sky-500/20 flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
+            <Camera size={22} fill="currentColor" />
+          </div>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Moment</span>
+        </button>
+      </div>
     </div>
   )
 }
