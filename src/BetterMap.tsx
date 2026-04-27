@@ -45,7 +45,7 @@ export function BetterMap() {
           className="text-left space-y-8 max-w-xl"
         >
           <h1 className="text-5xl md:text-[88px] font-black tracking-tighter leading-[0.9] text-white">
-            Walk to roam,<br />not just to reach.
+            Born to roam,<br />not just to reach.
           </h1>
           <p className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed">
             Stop being a blue dot on a line. CoRoam is the map that optimizes for discovery, not just speed. Experience neural nudges toward the city's best hidden gems.
@@ -81,7 +81,7 @@ export function BetterMap() {
         <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-4xl font-black uppercase tracking-tighter">How it works</h2>
             <p className="text-xl text-zinc-400 font-light leading-relaxed">
-              When you open the app, you land on our Let&apos;s Roam flow to get your roam started. Before you head out, you pick the kind of walk you want—a historic walk, a social walk, nature, or food. From there, nudges can guide you along the way whenever you choose to lean into those vibes. Mid-roam, you can also steer toward specific paths—for example, more food spots—if you want fresh options. Along the route you can add photos and notes, then wrap up with a summary of how the walk felt.
+              When you open the app, you land on our Let&apos;s Roam flow to get your roam started. Before you head out, you pick the kind of roam you want—a historic roam, a social roam, nature, or food. From there, nudges can guide you along the way whenever you choose to lean into those vibes. Mid-roam, you can also steer toward specific paths—for example, more food spots—if you want fresh options. Along the route you can add photos and notes, then wrap up with a summary of how the roam felt.
             </p>
         </div>
       </section>

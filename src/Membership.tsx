@@ -8,7 +8,7 @@ export function Membership() {
       price: '$0',
       description: 'Roam longer, save everything, and get richer context when it matters.',
       features: [
-        'Solo walks and core navigation',
+        'Solo roams and core navigation',
         '3 roams per week quota',
         'Browse all curated routes',
         'Flash-Lite companion guidance',
@@ -28,7 +28,7 @@ export function Membership() {
         'Hybrid Places & richer context',
         'Deeper vibe personalization',
         'Premium recap polish & insights',
-        'Special drops and themed walks'
+        'Special drops and themed roams'
       ],
       cta: 'Go Premium',
       highlight: true

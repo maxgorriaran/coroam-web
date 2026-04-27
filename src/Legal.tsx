@@ -42,7 +42,7 @@ export function Privacy() {
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-white uppercase tracking-tight">1. Data We Collect</h2>
         <p>
-          To provide the specialized "Solo Walk" experience, CoRoam collects precise location data while you are actively using the app. We also collect basic account information (email) and your curated "Auto-Diary" entries, which may include photos and text insights generated during your walks.
+          To provide the specialized "Solo Roam" experience, CoRoam collects precise location data while you are actively using the app. We also collect basic account information (email) and your curated "Auto-Diary" entries, which may include photos and text insights generated during your roams.
         </p>
       </section>
 

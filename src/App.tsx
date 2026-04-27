@@ -55,7 +55,7 @@ export default function App() {
     const url = window.location.href
     const shareData: ShareData = {
       title: 'CoRoam',
-      text: 'Join me on the CoRoam waitlist — AI-guided walks for urban explorers.',
+      text: 'Join me on the CoRoam waitlist — AI-guided roams for urban explorers.',
       url,
     }
     try {
@@ -134,14 +134,14 @@ export default function App() {
       desc: "Routes tailored to your current headspace—from 'Melancholic Neon' to 'Mid-day Momentum'.",
       icon: <Navigation className="text-blue-400" />,
       image: "/ui-vibe.jpg",
-      alt: "CoRoam interface displaying curated walking routes based on mood and vibe"
+      alt: "CoRoam interface displaying curated roaming routes based on mood and vibe"
     },
     {
       title: "Auto-Diary",
-      desc: "Your walk is automatically turned into a rich digital journal with photos and AI insights.",
+      desc: "Your roam is automatically turned into a rich digital journal with photos and AI insights.",
       icon: <BookOpen className="text-emerald-400" />,
       image: "/ui-diary.jpg",
-      alt: "Digital walking journal in the CoRoam app with AI insights and photos"
+      alt: "Digital roaming journal in the CoRoam app with AI insights and photos"
     }
   ]
 
@@ -188,7 +188,7 @@ export default function App() {
           className="space-y-7"
         >
           <span className="inline-block px-4 py-1.5 rounded-full border border-zinc-600/35 bg-white/[0.03] text-zinc-500 text-xs font-bold tracking-widest uppercase">
-            Solo Walk Priority
+            Solo Roam Priority
           </span>
           <h1 className="text-6xl md:text-[120px] font-black tracking-tighter leading-[0.9] mb-8">
             Stop navigating.<br /><span className="text-zinc-500">Start roaming.</span>
@@ -298,7 +298,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {[
             { city: "New York City", name: "Downtown Rim", stops: 12, tags: ["Architecture", "Harbor"], img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=800&auto=format&fit=crop" },
-            { city: "Chicago", name: "Riverwalk Loop", stops: 8, tags: ["Night", "Brutalism"], img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" },
+            { city: "Chicago", name: "River-Roam Loop", stops: 8, tags: ["Night", "Brutalism"], img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" },
             { city: "Miami", name: "Venetian Glow", stops: 15, tags: ["Waterfront", "Art Deco"], img: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=800&auto=format&fit=crop" }
           ].map((route, i) => (
             <motion.div 
@@ -306,7 +306,7 @@ export default function App() {
               whileHover={{ y: -10 }}
               className="group relative aspect-[3/4] rounded-[40px] bg-zinc-900 border border-white/10 overflow-hidden shadow-2xl"
             >
-              <img src={route.img} alt={`Atmospheric curated walking route in ${route.city} by CoRoam`} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" />
+              <img src={route.img} alt={`Atmospheric curated roaming route in ${route.city} by CoRoam`} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
               <div className="absolute bottom-8 left-8 right-8">
                 <div className="flex gap-2 mb-3">
@@ -338,7 +338,7 @@ export default function App() {
         <div className="space-y-4">
           <h2 className="text-5xl font-black">Come Roam with us</h2>
           <p className="text-zinc-500 text-lg font-light">
-            Refer fellow explorers and jump the queue. Every verified invite moves you 10 spots closer to the Solo Walk HUD.
+            Refer fellow explorers and jump the queue. Every verified invite moves you 10 spots closer to the Solo Roam HUD.
           </p>
         </div>
         <div className="flex flex-col items-center gap-3">
