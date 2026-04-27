@@ -51,7 +51,10 @@ export function BetterMap() {
             Stop being a blue dot on a line. CoRoam is the map that optimizes for discovery, not just speed. Experience neural nudges toward the city's best hidden gems.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
-            <button className="px-8 py-4 rounded-full bg-amber-400 text-[#050A18] font-black text-xs uppercase tracking-widest hover:bg-amber-300 transition-all">
+            <button 
+              onClick={() => window.location.hash = '#membership'}
+              className="px-8 py-4 rounded-full bg-amber-400 text-[#050A18] font-black text-xs uppercase tracking-widest hover:bg-amber-300 transition-all"
+            >
               View Live Map
             </button>
             <button className="px-8 py-4 rounded-full border border-white/20 text-white font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all">

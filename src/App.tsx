@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Privacy, Terms } from './Legal'
 import { BetterMap } from './BetterMap'
+import { Membership } from './Membership'
 import { supabase } from './lib/supabase'
 import {
   getWaitlistErrorMessage,
@@ -24,7 +25,7 @@ export default function App() {
   const [waitlistAlreadyRegistered, setWaitlistAlreadyRegistered] = useState(false)
   const [message, setMessage] = useState('')
   const [shareFeedback, setShareFeedback] = useState<string | null>(null)
-  const [view, setView] = useState<'home' | 'privacy' | 'terms' | 'better-map'>('home')
+  const [view, setView] = useState<'home' | 'privacy' | 'terms' | 'better-map' | 'membership'>('home')
 
   useEffect(() => {
     const handleHash = () => {
@@ -32,6 +33,7 @@ export default function App() {
       if (hash === '#privacy') setView('privacy')
       else if (hash === '#terms') setView('terms')
       else if (hash === '#better-map') setView('better-map')
+      else if (hash === '#membership') setView('membership')
       else setView('home')
     }
     window.addEventListener('popstate', handleHash)
@@ -75,6 +77,7 @@ export default function App() {
   if (view === 'privacy') return <Privacy />
   if (view === 'terms') return <Terms />
   if (view === 'better-map') return <BetterMap />
+  if (view === 'membership') return <Membership />
 
   const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault()
