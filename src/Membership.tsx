@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { Check, ArrowLeft } from 'lucide-react'
 
 export function Membership() {
   const tiers = [
@@ -41,9 +41,22 @@ export function Membership() {
       </div>
 
       <nav className="relative z-50 flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.location.hash = ''}>
+        <div className="flex-1 flex items-center gap-3 cursor-pointer" onClick={() => window.location.hash = ''}>
           <img src="/logo-mark.png" alt="" className="w-10 h-10 object-contain rounded-lg" />
           <img src="/coroam-wordmark-new.png" alt="CoRoam" className="h-44 object-contain" />
+        </div>
+        <div className="hidden md:flex flex-1 justify-center gap-8 text-sm font-medium text-zinc-500">
+          <a href="#" onClick={(e) => { e.preventDefault(); window.location.hash = ''; }} className="hover:text-white transition-colors">Home</a>
+          <a href="#better-map" className="hover:text-white transition-colors">The Map</a>
+          <a href="#features" className="hover:text-white transition-colors">Features</a>
+        </div>
+        <div className="flex-1 flex justify-end">
+          <button 
+            onClick={() => window.location.hash = '#better-map'}
+            className="flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 text-sm font-semibold hover:bg-white/[0.06] transition-all text-zinc-400 hover:text-white"
+          >
+            <ArrowLeft size={14} /> Back to Map
+          </button>
         </div>
       </nav>
 

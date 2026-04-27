@@ -55,7 +55,7 @@ export function BetterMap() {
               onClick={() => window.location.hash = '#membership'}
               className="px-8 py-4 rounded-full bg-amber-400 text-[#050A18] font-black text-xs uppercase tracking-widest hover:bg-amber-300 transition-all"
             >
-              View Live Map
+              Choose Your Path
             </button>
             <button className="px-8 py-4 rounded-full border border-white/20 text-white font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all">
               How it works
