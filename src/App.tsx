@@ -364,6 +364,7 @@ export default function App() {
         <div className="flex-1 flex justify-center gap-8 italic font-light">
           <a href="#privacy" onClick={() => setView('privacy')} className="hover:text-white transition-colors">Privacy</a>
           <a href="#terms" onClick={() => setView('terms')} className="hover:text-white transition-colors">Terms</a>
+          <a href="https://x.com/coroamapp" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X</a>
           <a href="https://instagram.com/coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
           <a href="https://tiktok.com/@coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>
           <a href="https://facebook.com/coroam.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
