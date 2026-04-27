@@ -161,30 +161,30 @@ export function RoamMapCanvas({ className = '' }: RoamMapCanvasProps) {
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="w-[90%] max-w-md p-10 rounded-[40px] bg-sky-500/80 backdrop-blur-md shadow-2xl border border-white/20 flex flex-col items-center text-center space-y-4 pointer-events-auto"
+          className="w-[80%] max-w-sm p-8 rounded-[32px] bg-sky-500/80 backdrop-blur-md shadow-2xl border border-white/20 flex flex-col items-center text-center space-y-3 pointer-events-auto"
         >
-          <h2 className="text-5xl font-black text-white drop-shadow-lg tracking-tight">
+          <h2 className="text-4xl font-black text-white drop-shadow-lg tracking-tight">
             Let&apos;s Roam
           </h2>
-          <p className="text-xl font-medium text-white drop-shadow-md leading-snug">
+          <p className="text-lg font-medium text-white drop-shadow-md leading-snug">
             Get outside—we&apos;ll give you something<br />to do.
           </p>
         </motion.div>
       </div>
 
       {/* Bottom Action Bar */}
-      <div className="absolute bottom-8 inset-x-8 grid grid-cols-2 gap-4 z-20">
-        <button className="flex flex-col items-center justify-center gap-2 py-4 rounded-[24px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
-          <div className="w-10 h-10 rounded-2xl bg-green-500/20 flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
-            <Leaf size={22} fill="currentColor" />
+      <div className="absolute bottom-6 inset-x-12 grid grid-cols-2 gap-4 z-20">
+        <button className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-[20px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
+          <div className="w-8 h-8 rounded-xl bg-green-500/20 flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+            <Leaf size={18} fill="currentColor" />
           </div>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Explore</span>
+          <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white">Explore</span>
         </button>
-        <button className="flex flex-col items-center justify-center gap-2 py-4 rounded-[24px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
-          <div className="w-10 h-10 rounded-2xl bg-sky-500/20 flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
-            <Camera size={22} fill="currentColor" />
+        <button className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-[20px] bg-[#1a2b3c]/90 backdrop-blur-md border border-white/10 shadow-2xl group">
+          <div className="w-8 h-8 rounded-xl bg-sky-500/20 flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
+            <Camera size={18} fill="currentColor" />
           </div>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Moment</span>
+          <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white">Moment</span>
         </button>
       </div>
     </div>
