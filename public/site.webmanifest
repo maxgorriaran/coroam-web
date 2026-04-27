@@ -8,20 +8,14 @@
   "theme_color": "#0a1628",
   "icons": [
     {
-      "src": "/og-image-square.png?v=5",
-      "sizes": "512x512",
+      "src": "/coroam-branding-v6.png",
+      "sizes": "1200x1200",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/og-image-square.png?v=5",
-      "sizes": "1024x1024",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/og-image-square.png?v=5",
-      "sizes": "192x192",
+      "src": "/coroam-branding-v6.png",
+      "sizes": "1200x1200",
       "type": "image/png",
       "purpose": "maskable"
     }
