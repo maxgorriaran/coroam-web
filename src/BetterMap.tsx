@@ -69,18 +69,6 @@ export function BetterMap() {
         >
           <div className="absolute inset-0 bg-[#0A1128] rounded-[60px] border border-white/5 overflow-hidden shadow-2xl">
             <RoamMapCanvas className="h-full min-h-[320px] md:min-h-0" />
-
-            <motion.div 
-              animate={{ y: [0, 10, 0] }} 
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-[38%] left-[8%] p-4 bg-white rounded-2xl shadow-2xl w-56 text-zinc-900 space-y-2 z-20 pointer-events-none md:bottom-[32%]"
-            >
-               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-lg bg-amber-400 flex items-center justify-center text-black font-black text-[8px]">C</div>
-                <span className="text-[10px] font-bold uppercase tracking-widest">Neural Nudge</span>
-              </div>
-              <p className="text-[10px] text-zinc-500 leading-tight">Architecture Alert: This building was a secret jazz club in the 1920s.</p>
-            </motion.div>
           </div>
         </motion.div>
       </section>
