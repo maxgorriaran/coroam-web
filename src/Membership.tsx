@@ -6,26 +6,29 @@ export function Membership() {
     {
       name: 'Free',
       price: '$0',
-      description: 'Perfect for the occasional explorer.',
+      description: 'Roam longer, save everything, and get richer context when it matters.',
       features: [
-        'Standard Walking Map',
-        '3 Curated Routes per Month',
-        'Basic Walk History',
-        'Community Access'
+        'Solo walks and core navigation',
+        '3 roams per week quota',
+        'Browse all curated routes',
+        'Flash-Lite companion guidance',
+        'MapKit-first POIs'
       ],
       cta: 'Start Roaming',
       highlight: false
     },
     {
       name: 'Premium',
-      price: '$12',
-      description: 'Unlock the full atmospheric experience.',
+      price: '$6.99',
+      description: 'The full atmospheric experience with unlimited roam time.',
       features: [
-        'Unlimited Curated Routes',
-        'Neural Nudges (AI Landmarks)',
-        'Vibe-Based Curation',
-        'Digital Walk Diary (Auto-Journal)',
-        'Priority Beta Access'
+        'Unlimited roam time and route starts',
+        'Unlimited saved roams and memories',
+        'Adaptive AI companion guidance',
+        'Hybrid Places & richer context',
+        'Deeper vibe personalization',
+        'Premium recap polish & insights',
+        'Special drops and themed walks'
       ],
       cta: 'Go Premium',
       highlight: true
