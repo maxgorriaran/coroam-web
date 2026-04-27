@@ -126,22 +126,52 @@ export default function App() {
       title: "Ambient Nudges",
       desc: "Proactive, location-based cues tailored to your chosen vibe. From historical lore to secluded nature paths, these nudges surface the 'invisible' details of your route that standard maps overlook.",
       icon: <Sparkles className="text-amber-400" />,
-      image: "/ui-nudge.jpg",
-      alt: "CoRoam mobile app interface showing AI-guided architectural highlights"
+      image: "/app-live-nudge.png",
+      alt: "CoRoam app showing an AI nudge on a live roam map",
+      position: "-top-[7%]"
     },
     {
       title: "Intent-Driven Curation",
       desc: "Dynamic route generation based on your specific objective, whether you’re hunting for local culinary gems, deep-diving into neighborhood lore, or seeking the quietest nature paths.",
       icon: <Navigation className="text-blue-400" />,
-      image: "/ui-vibe.jpg",
-      alt: "CoRoam interface displaying curated roaming routes based on mood and vibe"
+      image: "/app-vibe-picker.png",
+      alt: "CoRoam app vibe picker for shaping a roam",
+      position: "-top-[6%]"
     },
     {
       title: "The Urban Diary",
       desc: "A seamless chronological record of your exploration. The app automatically organizes your photos, voice memos, and location data into a high-fidelity summary of the day’s rhythm.",
       icon: <BookOpen className="text-emerald-400" />,
-      image: "/ui-diary.jpg",
-      alt: "Digital roaming journal in the CoRoam app with AI insights and photos"
+      image: "/app-diary-stack.png",
+      alt: "CoRoam travel diary showing chronological roam moments",
+      position: "-top-[6%]"
+    }
+  ]
+
+  const routeHighlights = [
+    {
+      city: "New York City",
+      name: "Downtown Rim",
+      stops: 12,
+      tags: ["Architecture", "Harbor"],
+      img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=800&auto=format&fit=crop",
+      alt: "Atmospheric curated roaming route in New York City by CoRoam"
+    },
+    {
+      city: "Chicago",
+      name: "River-Roam Loop",
+      stops: 8,
+      tags: ["Night", "Brutalism"],
+      img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop",
+      alt: "Atmospheric curated roaming route in Chicago by CoRoam"
+    },
+    {
+      city: "Miami",
+      name: "Venetian Glow",
+      stops: 15,
+      tags: ["Waterfront", "Art Deco"],
+      img: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=800&auto=format&fit=crop",
+      alt: "Atmospheric curated roaming route in Miami by CoRoam"
     }
   ]
 
@@ -272,11 +302,11 @@ export default function App() {
                 </p>
               </div>
               <div className="mt-auto px-6 pb-6">
-                <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden border border-white/5 bg-black/40">
+                <div className="relative aspect-[9/16] rounded-[32px] overflow-hidden border border-white/5 bg-black/40">
                   <img 
                     src={f.image} 
                     alt={f.alt} 
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                    className={`absolute left-0 w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ${f.position}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -296,17 +326,13 @@ export default function App() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          {[
-            { city: "New York City", name: "Downtown Rim", stops: 12, tags: ["Architecture", "Harbor"], img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=800&auto=format&fit=crop" },
-            { city: "Chicago", name: "River-Roam Loop", stops: 8, tags: ["Night", "Brutalism"], img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" },
-            { city: "Miami", name: "Venetian Glow", stops: 15, tags: ["Waterfront", "Art Deco"], img: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=800&auto=format&fit=crop" }
-          ].map((route, i) => (
+          {routeHighlights.map((route, i) => (
             <motion.div 
               key={i}
               whileHover={{ y: -10 }}
               className="group relative aspect-[3/4] rounded-[40px] bg-zinc-900 border border-white/10 overflow-hidden shadow-2xl"
             >
-              <img src={route.img} alt={`Atmospheric curated roaming route in ${route.city} by CoRoam`} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" />
+              <img src={route.img} alt={route.alt} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
               <div className="absolute bottom-8 left-8 right-8">
                 <div className="flex gap-2 mb-3">

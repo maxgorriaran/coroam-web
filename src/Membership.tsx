@@ -6,13 +6,20 @@ export function Membership() {
     {
       name: 'Free',
       price: '$0',
-      description: 'Roam longer, save everything, and get richer context when it matters.',
+      description: 'Core roaming with weekly limits. Enough to get outside and find your rhythm.',
       features: [
-        'Solo roams and core navigation',
-        '3 roams per week quota',
-        'Browse all curated routes',
-        'Flash-Lite companion guidance',
-        'MapKit-first POIs'
+        {
+          title: 'Solo roams and core navigation',
+          detail: 'Start nearby roams with essential map guidance'
+        },
+        {
+          title: '3 roams per week',
+          detail: 'Each roam start uses your weekly quota'
+        },
+        {
+          title: 'Curated route browsing',
+          detail: 'Browse all cards and preview route ideas'
+        }
       ],
       cta: 'Start Roaming',
       highlight: false
@@ -22,13 +29,30 @@ export function Membership() {
       price: '$6.99',
       description: 'The full atmospheric experience with unlimited roam time.',
       features: [
-        'Unlimited roam time and route starts',
-        'Unlimited saved roams and memories',
-        'Adaptive AI companion guidance',
-        'Hybrid Places & richer context',
-        'Deeper vibe personalization',
-        'Premium recap polish & insights',
-        'Special drops and themed roams'
+        {
+          title: 'Unlimited roam time',
+          detail: 'Roam as long as you want'
+        },
+        {
+          title: 'AI companion guidance',
+          detail: 'Smarter, richer, more adaptive guidance'
+        },
+        {
+          title: 'Curated routes',
+          detail: 'Unlimited starts with full in-roam context'
+        },
+        {
+          title: 'Personalization depth',
+          detail: 'Deeper vibe and route personalization'
+        },
+        {
+          title: 'Roam recaps and memories',
+          detail: 'Premium recap polish and deeper insights'
+        },
+        {
+          title: 'Special drops and themed roams',
+          detail: 'Priority access and exclusive drops'
+        }
       ],
       cta: 'Go Premium',
       highlight: true
@@ -99,11 +123,14 @@ export function Membership() {
 
               <div className="space-y-4 mb-10 flex-1">
                 {tier.features.map((feature, j) => (
-                  <div key={j} className="flex items-center gap-3">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center ${tier.highlight ? 'bg-amber-400/20 text-amber-400' : 'bg-white/10 text-zinc-500'}`}>
+                  <div key={j} className="flex items-start gap-3">
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 shrink-0 ${tier.highlight ? 'bg-sky-400/20 text-sky-300' : 'bg-emerald-400/20 text-emerald-300'}`}>
                       <Check size={12} strokeWidth={3} />
                     </div>
-                    <span className="text-sm text-zinc-300 font-light">{feature}</span>
+                    <div>
+                      <p className="text-sm text-zinc-200 font-medium">{feature.title}</p>
+                      <p className="text-sm text-zinc-500 font-light leading-snug">{feature.detail}</p>
+                    </div>
                   </div>
                 ))}
               </div>

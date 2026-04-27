@@ -1,0 +1,25 @@
+# Cloudflare Pages is connected to branch `main`. This repo uses `master` as the
+# integration branch — after each push to `master`, we mirror the same commit to
+# `main` so Pages builds and deploys automatically.
+name: Sync main from master
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Update main to match master
+        run: git push origin HEAD:main
