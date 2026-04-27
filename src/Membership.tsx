@@ -150,7 +150,7 @@ export function Membership() {
 
         <div className="mt-20 text-center">
           <p className="text-zinc-500 text-xs uppercase tracking-widest font-bold mb-4">Trusted by explorers in</p>
-          <p className="text-zinc-400 italic text-sm">NYC • Chicago • Miami • Austin • LA • London • Tokyo</p>
+          <p className="text-zinc-400 italic text-sm">New York City • Chicago • Miami • Austin • Los Angeles • San Francisco • Boston • Washington DC • Philadelphia • Providence</p>
         </div>
       </section>
 

@@ -124,7 +124,7 @@ export default function App() {
   const features = [
     {
       title: "Ambient Nudges",
-      desc: "Proactive, location-based cues tailored to your chosen vibe. From historical lore to secluded nature paths, these nudges surface the 'invisible' details of your route that standard maps overlook.",
+      desc: "Location-based cues tailored to your vibe, surfacing hidden lore, quiet paths, and overlooked details as you roam.",
       icon: <Sparkles className="text-amber-400" />,
       image: "/app-live-nudge.png",
       alt: "CoRoam app showing an AI nudge on a live roam map",
@@ -323,6 +323,23 @@ export default function App() {
           <p className="text-zinc-400 max-w-2xl mx-auto font-light">
             No high-traffic tourist traps. Only the atmospheric paths hand-picked by local curators.
           </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+          <div className="rounded-[28px] border border-sky-300/20 bg-sky-300/[0.06] p-6">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-sky-300 mb-3">Premium</p>
+            <h3 className="text-xl font-bold mb-2">Create a route from here</h3>
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
+              Pick a vibe, distance, and starting point. CoRoam builds a lore-rich route around you, shaped for the kind of walk you want right now.
+            </p>
+          </div>
+          <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-zinc-500 mb-3">Community</p>
+            <h3 className="text-xl font-bold mb-2">Roams From the Community</h3>
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
+              Follow routes real people have walked, loved, and shared. CoRoam checks each path for quality, detail, distance, and flow, then highlights the walks earning real starts, upvotes, and fresh activity.
+            </p>
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
